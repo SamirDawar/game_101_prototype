@@ -4,6 +4,6 @@ import tailwindcss from '@tailwindcss/vite'
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: "https://samirdawar.github.io/game_101_prototype/",
+  base: "game_101_prototype",
   plugins: [react(), tailwindcss()],
 })
