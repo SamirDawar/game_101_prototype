@@ -1,7 +1,27 @@
-import { useState, useEffect } from 'react';
-import { Shuffle, Swords, Shield, Zap, Trophy, Sparkles, Skull } from 'lucide-react';
-import './index.css'
+import React, { useState, useEffect } from 'react';
+import { Shuffle, Swords, Shield, Zap, Trophy, Sparkles, Skull, RefreshCw } from 'lucide-react';
 
+import img5591 from './assets/imagesforthepresentationgame101/IMG_5591.png';
+import img5593 from './assets/imagesforthepresentationgame101/IMG_5593.png';
+import img5592 from './assets/imagesforthepresentationgame101/IMG_5592.png';
+
+import img5588 from './assets/imagesforthepresentationgame101/IMG_5588.png';
+import img5590 from './assets/imagesforthepresentationgame101/IMG_5590.png';
+import img5589 from './assets/imagesforthepresentationgame101/IMG_5589.png';
+
+import img5597 from './assets/imagesforthepresentationgame101/IMG_5597.png';
+import img5596 from './assets/imagesforthepresentationgame101/IMG_5596.png';
+import img5595 from './assets/imagesforthepresentationgame101/IMG_5595.png';
+
+import img5583 from './assets/imagesforthepresentationgame101/IMG_5583.png';
+import img5582 from './assets/imagesforthepresentationgame101/IMG_5582.png';
+import img5584_1 from './assets/imagesforthepresentationgame101/IMG_5584_1.png';
+
+import img5586 from './assets/imagesforthepresentationgame101/IMG_5586.png';
+import img5587 from './assets/imagesforthepresentationgame101/IMG_5587.png';
+import img5585 from './assets/imagesforthepresentationgame101/IMG_5585.png';
+
+import "./index.css"
 
 const CardBattleGame = () => {
   const [gameState, setGameState] = useState('setup');
@@ -11,21 +31,36 @@ const CardBattleGame = () => {
   const [message, setMessage] = useState('Ready to battle?');
   const [attackResult, setAttackResult] = useState(null);
   const [isAnimating, setIsAnimating] = useState(false);
+  const [showHowToPlay, setShowHowToPlay] = useState(false);
 
   const allCards = [
-    { id: 1, name: 'Thunderclaw', type: 'Lightning', attack: 55, defense: 40, speed: 90, weakness: { Fire: 1.0, Earth: 2.0 }, color: 'from-yellow-400 to-yellow-600', icon: '⚡' },
-    { id: 2, name: 'Inferno Drake', type: 'Fire', attack: 84, defense: 78, speed: 100, weakness: { Water: 2.0, Earth: 2.0 }, color: 'from-orange-500 to-red-600', icon: '🔥' },
-    { id: 3, name: 'Tidecrusher', type: 'Water', attack: 83, defense: 100, speed: 78, weakness: { Lightning: 2.0, Nature: 2.0 }, color: 'from-blue-400 to-cyan-600', icon: '💧' },
-    { id: 4, name: 'Verdant Titan', type: 'Nature', attack: 82, defense: 83, speed: 80, weakness: { Fire: 2.0, Frost: 2.0 }, color: 'from-green-400 to-emerald-600', icon: '🌿' },
-    { id: 5, name: 'Shadow Wraith', type: 'Dark', attack: 65, defense: 60, speed: 110, weakness: { Light: 2.0, Spirit: 2.0 }, color: 'from-purple-600 to-indigo-800', icon: '👻' },
-    { id: 6, name: 'Storm Wyvern', type: 'Wind', attack: 134, defense: 95, speed: 80, weakness: { Lightning: 2.0, Earth: 2.0 }, color: 'from-sky-300 to-blue-500', icon: '🌪️' },
-    { id: 7, name: 'Mystic Sage', type: 'Spirit', attack: 110, defense: 90, speed: 130, weakness: { Dark: 2.0, Void: 2.0 }, color: 'from-pink-400 to-purple-500', icon: '✨' },
-    { id: 8, name: 'Crystal Oracle', type: 'Light', attack: 50, defense: 45, speed: 120, weakness: { Dark: 2.0, Void: 2.0 }, color: 'from-yellow-200 to-amber-400', icon: '💎' },
-    { id: 9, name: 'Iron Golem', type: 'Earth', attack: 130, defense: 80, speed: 55, weakness: { Water: 2.0, Nature: 2.0 }, color: 'from-stone-400 to-stone-600', icon: '🗿' },
-    { id: 10, name: 'Mountain Colossus', type: 'Earth', attack: 120, defense: 130, speed: 45, weakness: { Water: 2.0, Nature: 2.0 }, color: 'from-amber-600 to-brown-700', icon: '⛰️' },
-    { id: 11, name: 'Frost Leviathan', type: 'Frost', attack: 85, defense: 80, speed: 60, weakness: { Fire: 2.0, Lightning: 2.0 }, color: 'from-cyan-300 to-blue-400', icon: '❄️' },
-    { id: 12, name: 'Blaze Hound', type: 'Fire', attack: 110, defense: 80, speed: 95, weakness: { Water: 2.0, Earth: 2.0 }, color: 'from-red-500 to-orange-700', icon: '🔥' },
+    // Water
+    { id: 1, name: 'Tidalynx', element: 'Water', attack: 77, hp: 164, maxHp: 164, speed: 70, weakness: ['Light'], color: 'from-blue-400 to-cyan-600', image: img5591 },
+    { id: 2, name: 'Stormfin', element: 'Water', attack: 88, hp: 164, maxHp: 164, speed: 69, weakness: ['Light'], color: 'from-blue-500 to-blue-700', image: img5593 },
+    { id: 3, name: 'Hydroclast', element: 'Water', attack: 82, hp: 160, maxHp: 160, speed: 83, weakness: ['Light'], color: 'from-cyan-400 to-blue-600', image: img5592 },
+  
+    // Fire
+    { id: 4, name: 'Blazefang', element: 'Fire', attack: 98, hp: 120, maxHp: 120, speed: 60, weakness: ['Water'], color: 'from-red-500 to-orange-700', image: img5588 },
+    { id: 5, name: 'FlareStorm', element: 'Fire', attack: 89, hp: 123, maxHp: 123, speed: 87, weakness: ['Water'], color: 'from-orange-500 to-red-600', image: img5590 },
+    { id: 6, name: 'FireFiend', element: 'Fire', attack: 82, hp: 160, maxHp: 160, speed: 83, weakness: ['Water'], color: 'from-red-400 to-orange-600', image: img5589 },
+  
+    // Leaf
+    { id: 7, name: 'Leaflad', element: 'Leaf', attack: 82, hp: 160, maxHp: 160, speed: 83, weakness: ['Fire'], color: 'from-green-400 to-emerald-600', image: img5597 },
+    { id: 8, name: 'Mossback', element: 'Leaf', attack: 84, hp: 180, maxHp: 180, speed: 50, weakness: ['Fire'], color: 'from-green-500 to-green-700', image: img5596 },
+    { id: 9, name: 'Vinelash', element: 'Leaf', attack: 94, hp: 103, maxHp: 103, speed: 93, weakness: ['Fire'], color: 'from-lime-400 to-green-600', image: img5595 },
+  
+    // Dark
+    { id: 10, name: 'Voidclaw', element: 'Dark', attack: 85, hp: 148, maxHp: 148, speed: 97, weakness: ['Light'], color: 'from-purple-600 to-indigo-800', image: img5583 },
+    { id: 11, name: 'Nightshade', element: 'Dark', attack: 92, hp: 146, maxHp: 146, speed: 79, weakness: ['Light'], color: 'from-indigo-600 to-purple-800', image: img5582 },
+    { id: 12, name: 'Umberscale', element: 'Dark', attack: 87, hp: 198, maxHp: 198, speed: 15, weakness: ['Light'], color: 'from-slate-700 to-purple-900', image: img5584_1 },
+  
+    // Light
+    { id: 13, name: 'Lumina', element: 'Light', attack: 77, hp: 136, maxHp: 136, speed: 86, weakness: ['Dark'], color: 'from-yellow-200 to-amber-400', image: img5586 },
+    { id: 14, name: 'Radiant', element: 'Light', attack: 75, hp: 125, maxHp: 125, speed: 75, weakness: ['Dark'], color: 'from-amber-300 to-yellow-500', image: img5587 },
+    { id: 15, name: 'Haloglide', element: 'Light', attack: 87, hp: 95, maxHp: 95, speed: 20, weakness: ['Dark'], color: 'from-yellow-300 to-orange-400', image: img5585 },
   ];
+  
+  
 
   const shuffleArray = (array) => {
     const newArray = [...array];
@@ -84,9 +119,9 @@ const CardBattleGame = () => {
 
       const updatedBot = {
         ...botState,
-        main: { ...main, currentDefense: main.defense },
-        sub: { ...sub, currentDefense: sub.defense },
-        bench: bench.map(c => ({ ...c, currentDefense: c.defense })),
+        main: { ...main },
+        sub: { ...sub },
+        bench: bench.map(c => ({ ...c })),
         selectedCards: [main, sub, ...bench],
         hand: []
       };
@@ -112,15 +147,15 @@ const CardBattleGame = () => {
     const newPlayer = { ...player };
 
     if (role === 'main' && !newPlayer.main) {
-      newPlayer.main = { ...card, currentDefense: card.defense };
+      newPlayer.main = { ...card };
       newPlayer.selectedCards.push(card);
       newPlayer.hand = newPlayer.hand.filter(c => c.id !== card.id);
     } else if (role === 'sub' && !newPlayer.sub) {
-      newPlayer.sub = { ...card, currentDefense: card.defense };
+      newPlayer.sub = { ...card };
       newPlayer.selectedCards.push(card);
       newPlayer.hand = newPlayer.hand.filter(c => c.id !== card.id);
     } else if (role === 'bench' && newPlayer.bench.length < 2) {
-      newPlayer.bench.push({ ...card, currentDefense: card.defense });
+      newPlayer.bench.push({ ...card });
       newPlayer.selectedCards.push(card);
       newPlayer.hand = newPlayer.hand.filter(c => c.id !== card.id);
     }
@@ -136,36 +171,36 @@ const CardBattleGame = () => {
     if (player.main.speed > bot.main.speed) {
       setMessage('You strike first! (Higher speed)');
       setGameState('playerTurn');
-      setTurnPhase('attack');
+      setTurnPhase('action');
     } else if (bot.main.speed > player.main.speed) {
       setMessage('Bot strikes first! (Higher speed)');
       setGameState('botTurn');
-      setTurnPhase('attack');
+      setTurnPhase('action');
       setTimeout(() => executeBotTurn(), 2000);
     } else {
       setMessage('Equal speed! You go first.');
       setGameState('playerTurn');
-      setTurnPhase('attack');
+      setTurnPhase('action');
     }
   };
 
   const calculateDamage = (attacker, defender) => {
     let weaknessMultiplier = 1.0;
 
-    if (defender.weakness[attacker.type]) {
-      weaknessMultiplier = defender.weakness[attacker.type];
+    if (defender.weakness.includes(attacker.element)) {
+      weaknessMultiplier = 2.0;
     }
 
     const totalDamage = Math.floor(attacker.attack * weaknessMultiplier);
-    const remainingDefense = defender.currentDefense - totalDamage;
+    const remainingHp = defender.hp - totalDamage;
 
     return {
       baseDamage: attacker.attack,
       weaknessMultiplier,
       totalDamage,
-      defenseBlocked: defender.currentDefense,
-      remainingDefense: remainingDefense,
-      isKnockedOut: remainingDefense <= 0
+      hpBefore: defender.hp,
+      remainingHp: remainingHp,
+      isKnockedOut: remainingHp <= 0
     };
   };
 
@@ -184,7 +219,7 @@ const CardBattleGame = () => {
         if (result.isKnockedOut) {
           handleKnockout(isPlayerAttacking, defender);
         } else {
-          updateDefenderDefense(isPlayerAttacking, result.remainingDefense);
+          updateDefenderHp(isPlayerAttacking, result.remainingHp);
         }
       }, 2000);
     }, 500);
@@ -199,12 +234,12 @@ const CardBattleGame = () => {
       const newBot = { ...bot };
       newBot.main = null;
 
-      const availableCards = [...newBot.hand, newBot.sub, ...newBot.bench].filter(c => c !== null);
+      const availableCards = [newBot.sub, ...newBot.bench].filter(c => c !== null);
 
       if (availableCards.length === 0) {
         setBot(newBot);
         setGameState('gameOver');
-        setMessage('VICTORY! You defeated all enemy fighters!');
+        setMessage('🎉 VICTORY! You defeated all enemy fighters!');
         return;
       }
 
@@ -225,12 +260,12 @@ const CardBattleGame = () => {
       const newPlayer = { ...player };
       newPlayer.main = null;
 
-      const availableCards = [...newPlayer.hand, newPlayer.sub, ...newPlayer.bench].filter(c => c !== null);
+      const availableCards = [newPlayer.sub, ...newPlayer.bench].filter(c => c !== null);
 
       if (availableCards.length === 0) {
         setPlayer(newPlayer);
         setGameState('gameOver');
-        setMessage('DEFEAT... Bot has conquered all your fighters!');
+        setMessage('💀 DEFEAT... Bot has conquered all your fighters!');
         return;
       }
 
@@ -241,14 +276,14 @@ const CardBattleGame = () => {
     }
   };
 
-  const updateDefenderDefense = (isPlayerAttacking, newDefense) => {
+  const updateDefenderHp = (isPlayerAttacking, newHp) => {
     if (isPlayerAttacking) {
       const newBot = { ...bot };
-      newBot.main = { ...bot.main, currentDefense: newDefense };
+      newBot.main = { ...bot.main, hp: newHp };
       setBot(newBot);
     } else {
       const newPlayer = { ...player };
-      newPlayer.main = { ...player.main, currentDefense: newDefense };
+      newPlayer.main = { ...player.main, hp: newHp };
       setPlayer(newPlayer);
     }
 
@@ -256,22 +291,15 @@ const CardBattleGame = () => {
   };
 
   const botSelectNewMain = (botState) => {
-    const availableCards = [
-      ...botState.hand,
-      botState.sub,
-      ...botState.bench
-    ].filter(c => c !== null);
+    const availableCards = [botState.sub, ...botState.bench].filter(c => c !== null);
 
-    // Pick random card for prototype
     const randomIndex = Math.floor(Math.random() * availableCards.length);
     const newMain = availableCards[randomIndex];
 
     const newBot = { ...botState };
-    newBot.main = { ...newMain, currentDefense: newMain.defense };
+    newBot.main = { ...newMain, hp: newMain.maxHp };
 
-    if (botState.hand.find(c => c && c.id === newMain.id)) {
-      newBot.hand = newBot.hand.filter(c => c && c.id !== newMain.id);
-    } else if (botState.sub && botState.sub.id === newMain.id) {
+    if (botState.sub && botState.sub.id === newMain.id) {
       newBot.sub = null;
     } else {
       newBot.bench = newBot.bench.filter(c => c && c.id !== newMain.id);
@@ -279,17 +307,15 @@ const CardBattleGame = () => {
 
     setBot(newBot);
     setGameState('playerTurn');
-    setTurnPhase('attack');
+    setTurnPhase('action');
     setMessage('Bot has selected a new fighter! Your turn!');
   };
 
   const selectNewMain = (card) => {
     const newPlayer = { ...player };
-    newPlayer.main = { ...card, currentDefense: card.defense };
+    newPlayer.main = { ...card, hp: card.maxHp };
 
-    if (player.hand.find(c => c && c.id === card.id)) {
-      newPlayer.hand = newPlayer.hand.filter(c => c && c.id !== card.id);
-    } else if (player.sub && player.sub.id === card.id) {
+    if (player.sub && player.sub.id === card.id) {
       newPlayer.sub = null;
     } else {
       newPlayer.bench = newPlayer.bench.filter(c => c && c.id !== card.id);
@@ -297,8 +323,25 @@ const CardBattleGame = () => {
 
     setPlayer(newPlayer);
     setGameState('playerTurn');
-    setTurnPhase('attack');
-    setMessage('Your turn! Attack!');
+    setTurnPhase('action');
+    setMessage('Your turn! Attack or Swap!');
+  };
+
+  const swapMainAndSub = () => {
+    if (!player.sub) {
+      setMessage('No Sub available to swap!');
+      return;
+    }
+
+    const newPlayer = { ...player };
+    const temp = newPlayer.main;
+    newPlayer.main = newPlayer.sub;
+    newPlayer.sub = temp;
+
+    setPlayer(newPlayer);
+    setMessage('Swapped Main and Sub! Turn ending...');
+
+    setTimeout(() => switchTurn(), 1500);
   };
 
   const executeBotTurn = () => {
@@ -308,9 +351,9 @@ const CardBattleGame = () => {
   const switchTurn = () => {
     const newState = gameState === 'playerTurn' ? 'botTurn' : 'playerTurn';
     setGameState(newState);
-    setTurnPhase('attack');
+    setTurnPhase('action');
     setAttackResult(null);
-    setMessage(newState === 'playerTurn' ? 'Your turn! Attack!' : "Bot's turn!");
+    setMessage(newState === 'playerTurn' ? 'Your turn! Attack or Swap!' : "Bot's turn!");
 
     if (newState === 'botTurn') {
       setTimeout(() => {
@@ -324,11 +367,11 @@ const CardBattleGame = () => {
     const bScore = bot.trophies.length;
 
     if (pScore > bScore) {
-      setMessage(`You win with ${pScore} trophies vs ${bScore}!`);
+      setMessage(`🏆 You win with ${pScore} trophies vs ${bScore}!`);
     } else if (bScore > pScore) {
-      setMessage(`Bot wins with ${bScore} trophies vs ${pScore}!`);
+      setMessage(`💀 Bot wins with ${bScore} trophies vs ${pScore}!`);
     } else {
-      setMessage(`Draw! ${pScore} trophies each!`);
+      setMessage(`⚔️ Draw! ${pScore} trophies each!`);
     }
 
     setGameState('gameOver');
@@ -337,37 +380,48 @@ const CardBattleGame = () => {
   const CardComponent = ({ card, role, onClick, selected }) => (
     <div
       onClick={onClick}
-      className={`bg-gradient-to-br ${card.color} rounded-xl p-1 cursor-pointer transform transition-all duration-300 hover:scale-105 hover:shadow-2xl ${selected ? 'ring-4 ring-yellow-300 shadow-2xl' : ''} ${card.currentDefense < card.defense ? 'opacity-80 ring-2 ring-red-500' : ''} ${isAnimating && role === 'Main' ? 'animate-pulse' : ''}`}
-      style={{ minWidth: '160px', maxWidth: '180px' }}
+      className={`rounded-xl p-1 cursor-pointer transform transition-all duration-300 hover:scale-105 hover:shadow-2xl ${selected ? 'ring-4 ring-yellow-300 shadow-2xl' : ''} ${card.hp < card.maxHp ? 'opacity-80 ring-2 ring-red-500' : ''} ${isAnimating && role === 'Main' ? 'animate-pulse' : ''}`}
+      style={{ minWidth: '200px', maxWidth: '220px' }}
     >
-      <div className="bg-gradient-to-br from-slate-900 to-slate-800 rounded-lg p-3 border-2 border-slate-700">
-        <div className="text-center mb-2">
-          <div className="text-4xl mb-1">{card.icon}</div>
-          <h3 className="font-bold text-sm text-white">{card.name}</h3>
-          <div className="inline-block bg-slate-700 px-2 py-0.5 rounded text-xs text-white mt-1">
-            {card.type}
+      <div className="w-full h-[280px] overflow-hidden">
+        {/* Full Card Image */}
+        <img
+            src={card.image}
+            alt={card.name}
+            className="w-full h-full object-cover -ml-1"
+            style={{
+              objectPosition: "10% 18%",
+              transform: "scale(1.1)",
+              transformOrigin: "center"
+            }}
+          onError={(e) => {
+            e.target.style.display = 'none';
+            e.target.nextSibling.style.display = 'block';
+          }}
+        />
+        <div className="bg-gradient-to-br from-slate-900 to-slate-800 rounded-lg p-4 border-2 border-slate-700" style={{ display: 'none' }}>
+          <div className="w-full h-64 bg-slate-700 rounded-lg mb-2 flex items-center justify-center border-2 border-slate-600">
+            <p className="text-slate-500 text-sm">Card Image Not Found</p>
+          </div>
+          <div className="text-center">
+            <h3 className="font-bold text-lg text-white">{card.name}</h3>
+            <div className="inline-block bg-slate-700 px-2 py-1 rounded text-sm text-white mt-1">
+              {card.element}
+            </div>
           </div>
         </div>
-        <div className="mt-3 space-y-2">
-          <div className="flex items-center justify-between text-xs bg-red-900/30 rounded px-2 py-1">
-            <span className="flex items-center text-red-300"><Swords size={14} className="mr-1" />ATK</span>
-            <span className="font-bold text-white">{card.attack}</span>
-          </div>
-          <div className="flex items-center justify-between text-xs bg-blue-900/30 rounded px-2 py-1">
-            <span className="flex items-center text-blue-300"><Shield size={14} className="mr-1" />DEF</span>
-            <span className="font-bold text-white">
-              {card.currentDefense !== undefined ? card.currentDefense : card.defense}
-              {card.currentDefense !== card.defense && card.currentDefense !== undefined && <span className="text-gray-400 ml-1">/{card.defense}</span>}
-            </span>
-          </div>
-          <div className="flex items-center justify-between text-xs bg-yellow-900/30 rounded px-2 py-1">
-            <span className="flex items-center text-yellow-300"><Zap size={14} className="mr-1" />SPD</span>
-            <span className="font-bold text-white">{card.speed}</span>
-          </div>
-        </div>
+
+        {/* Role Badge Overlay */}
         {role && (
-          <div className="mt-3 text-xs text-center bg-gradient-to-r from-yellow-400 to-orange-400 text-slate-900 font-bold rounded px-2 py-1">
+          <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 text-xs text-center bg-gradient-to-r from-yellow-400 to-orange-400 text-slate-900 font-bold rounded-full px-4 py-2 shadow-lg border-2 border-yellow-300">
             {role}
+          </div>
+        )}
+
+        {/* Damage Indicator Overlay */}
+        {card.hp < card.maxHp && (
+          <div className="absolute top-2 right-2 bg-red-600 text-white font-bold rounded-full px-3 py-1 text-sm shadow-lg border-2 border-red-300">
+            {card.hp}/{card.maxHp} HP
           </div>
         )}
       </div>
@@ -375,11 +429,7 @@ const CardBattleGame = () => {
   );
 
   const getAvailableCards = (playerState) => {
-    return [
-      ...playerState.hand,
-      playerState.sub,
-      ...playerState.bench
-    ].filter(c => c !== null);
+    return [playerState.sub, ...playerState.bench].filter(c => c !== null);
   };
 
   return (
@@ -390,6 +440,9 @@ const CardBattleGame = () => {
             ⚔️ BATTLE ARENA ⚔️
           </h1>
           <div className="flex items-center justify-center gap-2">
+            <Sparkles className="text-yellow-400" />
+            <p className="text-yellow-300 text-sm font-semibold">Epic Card Battles</p>
+            <Sparkles className="text-yellow-400" />
           </div>
         </div>
 
@@ -398,13 +451,13 @@ const CardBattleGame = () => {
           {attackResult && (
             <div className="mt-3 text-white text-sm text-center space-y-1 bg-black/30 rounded-lg p-3">
               <p className="text-yellow-300">⚡ Base Attack: {attackResult.baseDamage}</p>
-              <p className="text-orange-300">Weakness Multiplier: {attackResult.weaknessMultiplier}x</p>
-              <p className="text-red-400 font-bold">Total Damage: {attackResult.totalDamage}</p>
-              <p className="text-blue-300">Defense: {attackResult.defenseBlocked}</p>
+              <p className="text-orange-300">🎯 Weakness Multiplier: {attackResult.weaknessMultiplier}x</p>
+              <p className="text-red-400 font-bold">💥 Total Damage: {attackResult.totalDamage}</p>
+              <p className="text-blue-300">❤️ HP Before: {attackResult.hpBefore}</p>
               <p className="font-bold text-xl mt-2">
                 {attackResult.isKnockedOut ?
-                  'KNOCKED OUT!' :
-                  `Remaining Defense: ${attackResult.remainingDefense}`
+                  '💥 KNOCKED OUT! 💥' :
+                  `❤️ Remaining HP: ${attackResult.remainingHp}`
                 }
               </p>
             </div>
@@ -412,7 +465,7 @@ const CardBattleGame = () => {
         </div>
 
         {gameState === 'setup' && (
-          <div className="text-center">
+          <div className="text-center space-y-6">
             <button
               onClick={startGame}
               className="bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-500 hover:to-orange-600 text-slate-900 font-bold py-4 px-12 rounded-2xl text-2xl transform transition hover:scale-110 shadow-2xl border-4 border-yellow-300"
@@ -420,6 +473,100 @@ const CardBattleGame = () => {
               <Shuffle className="inline mr-3" size={32} />
               START BATTLE
             </button>
+
+            <button
+              onClick={() => setShowHowToPlay(!showHowToPlay)}
+              className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-bold py-3 px-8 rounded-xl shadow-lg border-2 border-purple-300"
+            >
+              {showHowToPlay ? 'Hide' : 'Show'} How to Play
+            </button>
+
+            {showHowToPlay && (
+              <div className="bg-gradient-to-br from-slate-800/90 to-slate-900/90 backdrop-blur-xl rounded-2xl p-8 border-2 border-purple-500/50 text-left max-w-4xl mx-auto max-h-96 overflow-y-auto">
+                <h2 className="text-3xl font-bold text-yellow-400 mb-6 text-center">📖 How to Play</h2>
+
+                <div className="space-y-6 text-white text-sm">
+                  <section>
+                    <h3 className="text-xl font-bold text-orange-400 mb-3">1. Game Setup</h3>
+                    <ul className="list-disc list-inside space-y-2 text-gray-200">
+                      <li><strong>Deck:</strong> 12 cards total (6 per player). Each card has Attack (ATK), Health Points (HP), Speed (SPD), and an Element.</li>
+                      <li><strong>Team Composition:</strong>
+                        <ul className="list-disc list-inside ml-6 mt-1">
+                          <li><strong className="text-red-400">Main Attacker</strong> – the active combatant</li>
+                          <li><strong className="text-blue-400">Sub</strong> – first backup, can swap with Main</li>
+                          <li><strong className="text-green-400">Bench</strong> – two reserve cards</li>
+                        </ul>
+                      </li>
+                      <li>Press START BATTLE, shuffle, split the deck evenly, then each player selects their Main, Sub, and Bench.</li>
+                      <li><strong>Turn order:</strong> Decided by the highest SPD among the two Main attackers; the faster Main moves first.</li>
+                    </ul>
+                  </section>
+
+                  <section>
+                    <h3 className="text-xl font-bold text-orange-400 mb-3">2. Turn Structure</h3>
+                    <div className="bg-black/30 p-4 rounded-lg space-y-2">
+                      <div>
+                        <p className="font-semibold text-yellow-300">Your Turn:</p>
+                        <ul className="list-disc list-inside ml-4 text-gray-300">
+                          <li>Click <strong className="text-red-400">ATTACK</strong> to damage opponent's Main</li>
+                          <li>Click <strong className="text-blue-400">SWAP</strong> to exchange Main ↔ Sub (forfeit attack, end turn)</li>
+                          <li>If opponent's Main is knocked out, they choose a new Main from Sub/Bench (enters with full HP)</li>
+                        </ul>
+                      </div>
+                      <div>
+                        <p className="font-semibold text-yellow-300">Bot/Opponent Turn:</p>
+                        <ul className="list-disc list-inside ml-4 text-gray-300">
+                          <li>Automatic attack using the same damage calculation</li>
+                        </ul>
+                      </div>
+                      <p className="text-gray-400 italic">Turns repeat until a win condition is met.</p>
+                    </div>
+                  </section>
+
+                  <section>
+                    <h3 className="text-xl font-bold text-orange-400 mb-3">3. Combat Mechanics</h3>
+                    <div className="bg-black/30 p-4 rounded-lg space-y-3">
+                      <p className="font-semibold text-yellow-300">Damage Formula:</p>
+                      <div className="text-sm space-y-1 text-gray-300 ml-4">
+                        <p><strong>Damage = ATK × Weakness Multiplier</strong></p>
+                        <p>• Weakness Multiplier = <strong>1</strong> (normal) or <strong>2</strong> (attacking a card's elemental weakness)</p>
+                      </div>
+                      <div className="mt-3">
+                        <p className="font-semibold text-blue-300">Attack Sequence:</p>
+                        <ol className="list-decimal list-inside ml-4 text-gray-300 text-sm">
+                          <li>Compute damage</li>
+                          <li>Subtract damage from the defender's current HP</li>
+                          <li>If HP &gt; 0 → defender stays in play with reduced HP</li>
+                          <li>If HP ≤ 0 → defender is knocked out and becomes a trophy</li>
+                        </ol>
+                      </div>
+                      <p className="text-purple-400 font-semibold mt-2">⚠️ HP Persistence: Remaining HP carries over to the next attack on that card.</p>
+                    </div>
+                  </section>
+
+                  <section>
+                    <h3 className="text-xl font-bold text-orange-400 mb-3">4. Trophy & Victory Conditions</h3>
+                    <ul className="list-disc list-inside space-y-2 text-gray-200">
+                      <li><strong className="text-purple-400">Knockout Trophy:</strong> Each knocked-out card adds one trophy to the attacker's count (shown next to player names)</li>
+                      <li><strong className="text-green-400">Complete Victory:</strong> Opponent has no cards left (Main, Sub, and Bench are all eliminated)</li>
+                      <li><strong className="text-yellow-400">Early End:</strong> Click "End Game" - the player with the most trophies wins</li>
+                    </ul>
+                  </section>
+
+                  <section className="bg-gradient-to-r from-blue-900/30 to-cyan-900/30 p-4 rounded-lg border-2 border-blue-500/50">
+                    <h3 className="text-xl font-bold text-cyan-400 mb-3">⚡ Quick Reference Cheat Sheet</h3>
+                    <ul className="list-disc list-inside space-y-1 text-gray-200 text-sm">
+                      <li><strong>Turn Order:</strong> Higher SPD → first</li>
+                      <li><strong>Attack:</strong> Press ATTACK, apply ATK × (1 or 2)</li>
+                      <li><strong>Swap:</strong> Exchange Main ↔ Sub, forfeit attack, end turn</li>
+                      <li><strong>HP:</strong> Carries over between attacks</li>
+                      <li><strong>KO:</strong> HP ≤ 0 → trophy earned, pick new Main (full HP)</li>
+                      <li><strong>Win:</strong> Eliminate all opponent cards or have the most trophies when ending early</li>
+                    </ul>
+                  </section>
+                </div>
+              </div>
+            )}
           </div>
         )}
 
@@ -506,21 +653,33 @@ const CardBattleGame = () => {
               </div>
             </div>
 
-            {turnPhase === 'attack' && gameState === 'playerTurn' && !isAnimating && (
-              <div className="text-center">
-                <button
-                  onClick={() => executeAttack(true)}
-                  className="bg-gradient-to-r from-red-500 to-orange-600 hover:from-red-600 hover:to-orange-700 text-white font-bold py-4 px-12 rounded-2xl text-2xl transform transition hover:scale-110 shadow-2xl border-4 border-red-300 animate-pulse"
-                >
-                  <Swords className="inline mr-3" size={32} />
-                  ATTACK!
-                </button>
+            {turnPhase === 'action' && gameState === 'playerTurn' && !isAnimating && (
+              <div className="text-center space-y-4">
+                <div className="flex gap-4 justify-center">
+                  <button
+                    onClick={() => executeAttack(true)}
+                    className="bg-gradient-to-r from-red-500 to-orange-600 hover:from-red-600 hover:to-orange-700 text-white font-bold py-4 px-12 rounded-2xl text-2xl transform transition hover:scale-110 shadow-2xl border-4 border-red-300 animate-pulse"
+                  >
+                    <Swords className="inline mr-3" size={32} />
+                    ATTACK!
+                  </button>
+
+                  <button
+                    onClick={swapMainAndSub}
+                    disabled={!player.sub}
+                    className="bg-gradient-to-r from-blue-500 to-cyan-600 hover:from-blue-600 hover:to-cyan-700 text-white font-bold py-4 px-12 rounded-2xl text-2xl transform transition hover:scale-110 shadow-2xl border-4 border-blue-300 disabled:opacity-30 disabled:cursor-not-allowed"
+                  >
+                    <RefreshCw className="inline mr-3" size={32} />
+                    SWAP
+                  </button>
+                </div>
+                <p className="text-gray-400 text-sm">Swap will exchange your Main and Sub, then end your turn</p>
               </div>
             )}
 
             {turnPhase === 'selectNewMain' && gameState === 'playerTurn' && (
               <div className="bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-xl rounded-2xl p-6 border-2 border-yellow-500">
-                <h3 className="text-yellow-400 font-bold text-xl mb-4 text-center">Select New Main Attacker!</h3>
+                <h3 className="text-yellow-400 font-bold text-xl mb-4 text-center">⚠️ Select New Main Attacker! ⚠️</h3>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                   {getAvailableCards(player).map(card => (
                     <div key={card.id} onClick={() => selectNewMain(card)} className="cursor-pointer">
