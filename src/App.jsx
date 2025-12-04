@@ -355,11 +355,13 @@ const CardBattleGame = () => {
     setAttackResult(null);
     setMessage(newState === 'playerTurn' ? 'Your turn! Attack or Swap!' : "Bot's turn!");
 
-    if (newState === 'botTurn') {
+    // Only allow bot to act if the turn phase is normal
+    if (newState === 'botTurn' && turnPhase !== 'selectNewMain') {
       setTimeout(() => {
         executeBotTurn();
       }, 1500);
     }
+
   };
 
   const endGame = () => {
