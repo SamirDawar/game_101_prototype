@@ -1,1 +1,38 @@
 @import "tailwindcss";
+
+@keyframes bounce-slow {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+  }
+  
+  @keyframes bounce-slower {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(25px); }
+  }
+  
+  @keyframes spin-slow {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  @keyframes spin-slower {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(180deg); }
+  }
+  
+  .animate-bounce-slow {
+    animation: bounce-slow 6s infinite ease-in-out;
+  }
+  
+  .animate-bounce-slower {
+    animation: bounce-slower 10s infinite ease-in-out;
+  }
+  
+  .animate-spin-slow {
+    animation: spin-slow 12s linear infinite;
+  }
+  
+  .animate-spin-slower {
+    animation: spin-slower 16s linear infinite;
+  }
+  

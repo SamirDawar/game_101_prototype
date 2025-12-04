@@ -435,7 +435,27 @@ const CardBattleGame = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 p-4">
+    <div className="min-h-screen relative overflow-hidden bg-gradient-to-br from-pink-200 via-purple-200 to-blue-200 p-4">
+            {/* ANIME FLOATING SHAPES */}
+      <div className="pointer-events-none absolute top-10 left-10 w-72 h-72 bg-pink-300 rounded-full opacity-30 blur-2xl animate-pulse"></div>
+
+      <div className="pointer-events-none absolute top-1/3 right-0 w-96 h-96 bg-blue-300 rounded-full opacity-25 blur-3xl animate-bounce-slow"></div>
+
+      <div className="pointer-events-none absolute bottom-0 left-1/3 w-80 h-80 bg-purple-300 rounded-full opacity-20 blur-2xl animate-bounce-slower"></div>
+
+      {/* ANIME SPARKLES */}
+      <div className="pointer-events-none absolute top-20 right-1/4 text-white text-4xl opacity-70 animate-spin-slow">
+        ✦
+      </div>
+
+      <div className="pointer-events-none absolute bottom-40 left-1/5 text-white text-3xl opacity-70 animate-spin-slower">
+        ✧
+      </div>
+
+      <div className="pointer-events-none absolute top-1/2 left-1/2 text-white text-5xl opacity-60 animate-pulse">
+        ✦
+      </div>
+
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-6">
           <h1 className="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-red-500 to-pink-500 mb-2 drop-shadow-lg">
@@ -485,7 +505,7 @@ const CardBattleGame = () => {
 
             {showHowToPlay && (
               <div className="bg-gradient-to-br from-slate-800/90 to-slate-900/90 backdrop-blur-xl rounded-2xl p-8 border-2 border-purple-500/50 text-left max-w-4xl mx-auto max-h-96 overflow-y-auto">
-                <h2 className="text-3xl font-bold text-yellow-400 mb-6 text-center">📖 How to Play</h2>
+                <h2 className="text-3xl font-bold text-yellow-400 mb-6 text-center">How to Play</h2>
 
                 <div className="space-y-6 text-white text-sm">
                   <section>
@@ -542,7 +562,7 @@ const CardBattleGame = () => {
                           <li>If HP ≤ 0 → defender is knocked out and becomes a trophy</li>
                         </ol>
                       </div>
-                      <p className="text-purple-400 font-semibold mt-2">⚠️ HP Persistence: Remaining HP carries over to the next attack on that card.</p>
+                      <p className="text-purple-400 font-semibold mt-2">HP Persistence: Remaining HP carries over to the next attack on that card.</p>
                     </div>
                   </section>
 
@@ -559,7 +579,7 @@ const CardBattleGame = () => {
                     <h3 className="text-xl font-bold text-cyan-400 mb-3">⚡ Quick Reference Cheat Sheet</h3>
                     <ul className="list-disc list-inside space-y-1 text-gray-200 text-sm">
                       <li><strong>Turn Order:</strong> Higher SPD → first</li>
-                      <li><strong>Attack:</strong> Press ATTACK, apply ATK × (1 or 2)</li>
+                      <li><strong>Attack:</strong> Press ATTACK, apply ATK (1 or 2)</li>
                       <li><strong>Swap:</strong> Exchange Main ↔ Sub, forfeit attack, end turn</li>
                       <li><strong>HP:</strong> Carries over between attacks</li>
                       <li><strong>KO:</strong> HP ≤ 0 → trophy earned, pick new Main (full HP)</li>
@@ -681,7 +701,7 @@ const CardBattleGame = () => {
 
             {turnPhase === 'selectNewMain' && gameState === 'playerTurn' && (
               <div className="bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-xl rounded-2xl p-6 border-2 border-yellow-500">
-                <h3 className="text-yellow-400 font-bold text-xl mb-4 text-center">⚠️ Select New Main Attacker! ⚠️</h3>
+                <h3 className="text-yellow-400 font-bold text-xl mb-4 text-center">Select New Main Attacker!</h3>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                   {getAvailableCards(player).map(card => (
                     <div key={card.id} onClick={() => selectNewMain(card)} className="cursor-pointer">
